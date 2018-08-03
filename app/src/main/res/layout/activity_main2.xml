@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="501dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/idbga" />
+
+    <Button
+        android:id="@+id/checkbutton"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/ic_cloud"></Button>
+
+    <Button
+        android:id="@+id/checkbutton1"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignEnd="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_error"></Button>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_set_as"
+        app:backgroundTint="?android:attr/colorActivatedHighlight" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="2dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_send"
+        app:backgroundTint="?android:attr/textColorLink" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/viewPhoto"
+            android:layout_width="89dp"
+            android:layout_height="86dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/nameTV"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rollNumTV"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/addressTV"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/expiryDateTV"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ctz"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/department"
+            android:layout_width="267dp"
+            android:layout_height="60dp"
+            android:fontFamily="sans-serif-condensed"
+
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/barcode"
+        android:layout_width="650dp"
+        android:layout_height="40dp"
+        android:textAllCaps="true"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="80dp" />
+
+
+</RelativeLayout>
