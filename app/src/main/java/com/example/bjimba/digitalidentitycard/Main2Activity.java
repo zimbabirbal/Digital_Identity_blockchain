@@ -86,7 +86,7 @@ public class Main2Activity extends AppCompatActivity {
 
         checkBtn = (Button) findViewById(R.id.checkbutton);
         checkBtn1 = (Button) findViewById(R.id.checkbutton1);
-        iv = (ImageView)findViewById(R.id.viewPhoto);
+        iv = (ImageView) findViewById(R.id.viewPhoto);
         nameTv = (TextView) findViewById(R.id.nameTV);
         rollNo = (TextView) findViewById(R.id.rollNumTV);
         address1 = (TextView) findViewById(R.id.addressTV);
@@ -94,26 +94,18 @@ public class Main2Activity extends AppCompatActivity {
         dob1 = (TextView) findViewById(R.id.dob);
         ctzNum1 = (TextView) findViewById(R.id.ctz);
         department1 = (TextView) findViewById(R.id.department);
-        barcode1 =(ImageView)findViewById(R.id.barcode);
+        barcode1 = (ImageView) findViewById(R.id.barcode);
         requestQueue = Volley.newRequestQueue(this.getApplicationContext());
 
         // Toast.makeText(getApplicationContext(), "sdfsdfsfsdff ", Toast.LENGTH_SHORT).show();
-        fBar1= (FloatingActionButton ) findViewById(R.id.floatingActionButton) ;
-        fBar2=(FloatingActionButton ) findViewById(R.id.floatingActionButton1);
 
-        fBar1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.content.Intent i = new android.content.Intent(getApplicationContext(),Main3Activity.class);
-                i.putExtra("hash_Value", hash_Value);
+        fBar2 = (FloatingActionButton) findViewById(R.id.floatingActionButton1);
 
-                startActivity(i);
-            }
-        });
+
         fBar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.content.Intent i = new android.content.Intent(getApplicationContext(),Main4Activity.class);
+                android.content.Intent i = new android.content.Intent(getApplicationContext(), Main3Activity.class);
                 i.putExtra("hash_Value", hash_Value);
 
                 startActivity(i);
@@ -129,18 +121,25 @@ public class Main2Activity extends AppCompatActivity {
         checkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"ID is on Blockchain",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "ID is on Blockchain", Toast.LENGTH_SHORT).show();
 
             }
         });
         checkBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"ID is currently not in Blockchain",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "ID is currently not in Blockchain", Toast.LENGTH_SHORT).show();
             }
         });
 
+        simpleFetch();
 
+
+    }
+
+
+
+    private void simpleFetch() {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -178,6 +177,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
@@ -206,9 +206,11 @@ public class Main2Activity extends AppCompatActivity {
         };
 
         requestQueue.add(request);
+
         ImageFetch();
         BarCodeRead();
         HashCodeFetch();
+
     }
 
     private void HashCodeFetch() {

@@ -9,11 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main4Activity extends AppCompatActivity {
     public ImageView img;
@@ -21,6 +32,9 @@ public class Main4Activity extends AppCompatActivity {
     public Button buttonScan,buttonVerify;
     public TextView tv2,tv3,tv4;
     public IntentIntegrator qrScan;
+    RequestQueue requestQueue;
+    String initialHash="";
+    String hash_url ="http://ma-gar.com/blockchain/hash.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +48,9 @@ public class Main4Activity extends AppCompatActivity {
         buttonScan.setVisibility(View.VISIBLE);
         buttonVerify.setVisibility(View.GONE);
 
-        Bundle bundle = getIntent().getExtras();
-        message = bundle.getString("hash_Value");
+        //Bundle bundle = getIntent().getExtras();
+        //message = bundle.getString("hash_Value");
+        message= "fsfd";
 
         tv2.setText("Please scan the QR Code to valid the ID.");
 
@@ -49,7 +64,7 @@ public class Main4Activity extends AppCompatActivity {
         buttonVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkValidate(message);
+                checkValidate();
             }
         });
 
@@ -130,6 +145,7 @@ public class Main4Activity extends AppCompatActivity {
         addressMessage= localAddress;
         hashMessage=localHash;
 
+        tv2.setText(hashMessage);
         tv3.setText(addressMessage);
 
 
@@ -137,9 +153,73 @@ public class Main4Activity extends AppCompatActivity {
 
     }
 
-    private void checkValidate(String message) {
+    private void checkValidate() {
 
+        Toast.makeText(getApplicationContext(),checkBlockchain(),Toast.LENGTH_SHORT).show();
+        if(hashMessage.equals(checkBlockchain()))
+        {
+            Toast.makeText(getApplicationContext(),"ID is valid",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Id is not valid",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private String checkBlockchain() {
+        requestQueue = Volley.newRequestQueue(this.getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.POST, hash_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_SHORT).show();
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(new String(response));
+                    JSONArray jsonArray = jsonObject.getJSONArray("users");
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject employee = jsonArray.getJSONObject(i);
+
+
+                        initialHash = employee.getString("ib_hash");
+
+                        Toast.makeText(getApplicationContext(),initialHash,Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplicationContext(), "Please enter your valid id or password" + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                // hashMap.put("email",email.getText().toString());
+                // hashMap.put("password",password.getText().toString());
+
+
+                hashMap.put("b_address", addressMessage);
+
+                return hashMap;
+            }
+        };
+
+        requestQueue.add(request);
+        return initialHash;
 
     }
+
 
 }

@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="501dp"
+        android:layout_height="600dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="8dp"
@@ -41,17 +41,6 @@
         android:background="@drawable/ic_error"></Button>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="2dp"
-        android:layout_marginLeft="2dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_menu_set_as"
-        app:backgroundTint="?android:attr/colorActivatedHighlight" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton1"
@@ -75,8 +64,8 @@
 
         <ImageView
             android:id="@+id/viewPhoto"
-            android:layout_width="89dp"
-            android:layout_height="86dp"
+            android:layout_width="87dp"
+            android:layout_height="83dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="center"
